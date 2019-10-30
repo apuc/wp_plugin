@@ -8,10 +8,6 @@
 
 class AdminPage extends BaseComponent
 {
-    public function params()
-    {
-        return [];
-    }
 
     public function init()
     {
@@ -27,6 +23,22 @@ class AdminPage extends BaseComponent
                 $params['position']
             );
         });
+    }
+
+    public function run()
+    {
+        $get = $_GET;
+        if (isset($get['action'])) {
+            $action = 'action' . ucfirst($get['action']);
+        } else {
+            $action = 'actionIndex';
+        }
+        if (method_exists($this, $action)) {
+            $this->$action();
+        }
+        else {
+            echo 'Page not found';
+        }
     }
 
 }

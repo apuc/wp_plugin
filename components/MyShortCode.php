@@ -11,7 +11,7 @@ class MyShortCode extends BaseComponent
 
     public function printSC($atts, $content)
     {
-        return $this->render('test.php', ['data' => 'Привет'], false);
+        return $this->render('table.php', [], false);
     }
 
 }

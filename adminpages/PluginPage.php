@@ -18,12 +18,23 @@ class PluginPage extends AdminPage implements AdminPageInterface
             'menu_slug' => 'my_pl',
             'function' => [$this, 'run'],
             'icon_url' => null,
-            'position' => 10,
+            'position' => 50,
         ];
     }
 
-    public function run()
+    public function actionIndex()
     {
-        $this->render('test.php', ['data' => 'admin'], true);
+        $this->render('test.php', ['data' => 'index'], true);
     }
+
+    public function actionAbout()
+    {
+        $this->render('test.php', ['data' => 'about'], true);
+    }
+
+    public function actionTable()
+    {
+        $this->render('table.php', [], true);
+    }
+
 }

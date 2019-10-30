@@ -6,5 +6,5 @@
  * Time: 0:10
  * @var $data string
  */
-
-echo $data;
+?>
+<h1><?php echo $data; ?></h1>

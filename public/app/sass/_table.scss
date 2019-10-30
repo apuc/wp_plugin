@@ -1,0 +1,60 @@
+.table-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: rem(200);
+}
+h1{
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.75);
+  color: #afafaf;
+  font-size: rem(18);
+  font-weight: 400;
+  line-height: rem(17);
+  margin-bottom: rem(20);
+}
+.table{
+
+  thead{
+    background-image: linear-gradient(to top, #e8e8e8 0%, #ffffff 100%);
+    a{
+      color: #afafaf;
+      transition: 200ms ease;
+      &:hover{
+        color: darken(#afafaf, 10%);
+        transition: 200ms ease;
+      }
+    }
+    .fa{
+      font-size: rem(13);
+    }
+  }
+  tbody{
+    background: #f7f7f7;
+    tr{
+      &:hover{
+        background: darken(#afafaf, 5%);
+        transition: 200ms ease;
+        td{
+          color: #fff;
+        }
+      }
+    }
+
+  }
+  tr{
+    border: 1px solid #dddddd;
+    transition: 200ms ease;
+
+  }
+  th{
+    padding: rem(15);
+    font-size: rem(15);
+    font-weight: 700;
+  }
+  td{
+    padding: rem(15);
+    font-size: rem(14);
+    color: #afafaf;
+  }
+}

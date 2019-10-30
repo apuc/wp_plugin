@@ -12,6 +12,12 @@ include __DIR__ . '/init.php';
 
 $plugin = new Plugin();
 
-add_shortcode( 'base', [ new MyShortCode(), 'printSC' ] );
+$plugin->createShortCode('base', [ new MyShortCode(), 'printSC' ] );
 
 $plugin->createAdminPage(new PluginPage());
+
+$plugin->createAjax('pl_ajax', [new MyAjax(), 'run']);
+
+$plugin->addAction(new AdminJsAction());
+
+$plugin->addAction(new TableCssJsAction());
