@@ -6,7 +6,7 @@
 ?>
 <div class="container">
     <div class="table-wrap">
-        <h1>Awesome Clean Table Design</h1>
+        <h1>Пользователи</h1>
         <table class="table" id="mainTable" data-sort="ASC" data-page="1" data-field="user_name">
             <thead>
             <tr>

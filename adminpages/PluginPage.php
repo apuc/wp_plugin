@@ -12,8 +12,8 @@ class PluginPage extends AdminPage implements AdminPageInterface
     public function params()
     {
         return [
-            'page_title' => 'Заголовок',
-            'menu_title' => 'Пункт',
+            'page_title' => 'User Ajax',
+            'menu_title' => 'User Ajax',
             'capability' => 'manage_options',
             'menu_slug' => 'my_pl',
             'function' => [$this, 'run'],
@@ -24,7 +24,16 @@ class PluginPage extends AdminPage implements AdminPageInterface
 
     public function actionIndex()
     {
-        $this->render('test.php', ['data' => 'index'], true);
+        $users = new UserDataProvider([
+            'sortBy' => 'meta_value',
+            'query' => [
+                'meta_key' => 'role',
+            ],
+            'currentPage' => isset($_GET['currentPage']) ? $_GET['currentPage'] : 1
+        ]);
+
+        $table = $this->render('table.php', ['users' => $users], false);
+        $this->render('section.php', ['users' => $users, 'data' => $table], true);
     }
 
     public function actionAbout()

@@ -11,6 +11,11 @@ class MyShortCode extends BaseComponent
 
     public function printSC($atts, $content)
     {
+        $currentUser = wp_get_current_user();
+        if(!isset($currentUser->caps['administrator'])){
+            return '403';
+        }
+
         $currentPage = 1;
         $sortType = 'ASC';
         $sortBy = 'user_name';
