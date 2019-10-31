@@ -34,7 +34,12 @@ class PluginPage extends AdminPage implements AdminPageInterface
 
     public function actionTable()
     {
-        $this->render('table.php', [], true);
+        $users = new UserDataProvider([
+            'sortBy' => 'user_name',
+            'currentPage' => isset($_GET['currentPage']) ? $_GET['currentPage'] : 1
+        ]);
+
+        $this->render('table.php', ['users' => $users], true);
     }
 
 }

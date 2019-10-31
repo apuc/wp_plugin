@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $users UserDataProvider
+ */
+?>
 <section>
     <div class="container">
         <div class="table-wrap">
@@ -11,24 +16,25 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($users->getModels() as $user): ?>
 
-                <tr>
-                    <td>Rebeka</td>
-                    <td>rmacadam0@photobucket.com</td>
-                    <td>subscriber</td>
-                </tr>
-                <tr>
-                    <td>Rebeka</td>
-                    <td>rmacadam0@photobucket.com</td>
-                    <td>subscriber</td>
-                </tr>
-                <tr>
-                    <td>Rebeka</td>
-                    <td>rmacadam0@photobucket.com</td>
-                    <td>subscriber</td>
-                </tr>
+                    <tr>
+                        <td><?= $user->user_nicename ?></td>
+                        <td><?= $user->user_email ?></td>
+                        <td><?= $user->roles[0] ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
                 </tbody>
             </table>
+            <div class="pagination">
+                <a href="#">«</a>
+                <?php for($i=1; $i <= $users->getPageCount(); $i++): ?>
+                <a href="#" <?= $i == $users->currentPage ? 'class="active"' : '' ?>><?= $i ?></a>
+                <?php endfor; ?>
+                <a href="#">»</a>
+            </div>
         </div>
+
     </div>
 </section>

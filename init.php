@@ -26,3 +26,7 @@ foreach (glob(plugin_dir_path(__FILE__) . "components/*.php") as $file) {
 foreach (glob(plugin_dir_path(__FILE__) . "adminpages/*.php") as $file) {
     require_once($file);
 }
+
+foreach (glob(plugin_dir_path(__FILE__) . "dataproviders/*.php") as $file) {
+    require_once($file);
+}
