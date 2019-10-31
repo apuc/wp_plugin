@@ -20,6 +20,10 @@ class UserDataProvider extends DataProvider implements DataProviderInterface
             $params['fields'] = $this->query['fields'];
         }
 
+        if(isset($this->query['meta_key'])){
+            $params['meta_key'] = $this->query['meta_key'];
+        }
+
         $this->models = new WP_User_Query($params);
 
         $this->totalCount = $this->models->get_total();

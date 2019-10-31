@@ -11,14 +11,32 @@ class MyShortCode extends BaseComponent
 
     public function printSC($atts, $content)
     {
-        $users = new UserDataProvider([
-            'pageSize' => 5,
-            'sortType' => isset($_GET['sort_type']) ? $_GET['sort_type'] : 'ASC',
-            'sortBy' => isset($_GET['sort_by']) ? $_GET['sort_by'] : 'user_name',
-            'currentPage' => isset($_GET['current_page']) ? $_GET['current_page'] : 1
-        ]);
+        $currentPage = 1;
+        $sortType = 'ASC';
+        $sortBy = 'user_name';
+        if(isset($_COOKIE['tableParams'])){
+            $cookie = json_decode(str_replace ('\"','"', $_COOKIE['tableParams']), true);
+            $currentPage = $cookie['page'];
+            $sortType = $cookie['sortType'];
+            $sortBy = $cookie['field'];
+        }
+        $params = [
+            'pageSize' => 10,
+            'sortType' => $sortType,
+            'sortBy' => $sortBy,
+            'currentPage' => $currentPage
+        ];
 
-        return $this->render('table.php', ['users' => $users], false);
+        if ($sortBy == 'meta_value'){
+            $params['query'] = [
+                'meta_key' => 'role'
+            ];
+        }
+
+        $users = new UserDataProvider($params);
+
+        $html = $this->render('table.php', ['users' => $users], false);
+        return $this->render('section.php', ['data' => $html, 'users' => $users], false);
     }
 
 }

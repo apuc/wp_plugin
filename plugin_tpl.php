@@ -18,6 +18,8 @@ $plugin->createAdminPage(new PluginPage());
 
 $plugin->createAjax('pl_ajax', [new MyAjax(), 'run']);
 
+$plugin->createAjax('get_table', [new TableAjax(), 'run']);
+
 $plugin->addAction(new AdminJsAction());
 
 $plugin->addAction(new TableCssJsAction());
